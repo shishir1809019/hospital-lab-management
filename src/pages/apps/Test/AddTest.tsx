@@ -18,7 +18,7 @@ interface StateType {
 const NormalFormValidation = () => {
   const [validated, setValidated] = useState<boolean>(false);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmitForm = (event: any) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -27,111 +27,7 @@ const NormalFormValidation = () => {
 
     setValidated(true);
   };
-  return (
-    <>
-      <Card>
-        <Card.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Row className="align-items-center">
-              <Col sm={6} md={4} lg={3} className="mb-3">
-                {" "}
-                <Form.Group
-                  className="position-relative mb-3"
-                  controlId="validationTooltip01"
-                >
-                  <Form.Label>First name</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="First name"
-                    defaultValue="Mark"
-                  />
-                  <Form.Control.Feedback tooltip>
-                    Looks good!
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Col>
 
-              <Col sm={6} md={4} lg={3} className="mb-3">
-                {" "}
-                <Form.Group
-                  className="position-relative mb-3"
-                  controlId="validationTooltip01"
-                >
-                  <Form.Label>Shortcut</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="Shortcut"
-                    defaultValue=""
-                  />
-                  <Form.Control.Feedback tooltip>
-                    Looks good!
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-              <Col sm={6} md={4} lg={3} className="mb-3">
-                {" "}
-                <Form.Group
-                  className="position-relative mb-3"
-                  controlId="validationTooltip01"
-                >
-                  <Form.Label>Sample Type</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="Sample Type"
-                    defaultValue=""
-                  />
-                  <Form.Control.Feedback tooltip>
-                    Looks good!
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-              <Col sm={6} md={4} lg={3} className="mb-3">
-                {" "}
-                <Form.Group
-                  className="position-relative mb-3"
-                  controlId="validationTooltip01"
-                >
-                  <Form.Label>Price</Form.Label>
-                  <Form.Control
-                    required
-                    type="number"
-                    placeholder="First name"
-                    defaultValue=""
-                  />
-                  <Form.Control.Feedback tooltip>
-                    Looks good!
-                  </Form.Control.Feedback>
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col md>
-                <FloatingLabel
-                  className="mb-3"
-                  controlId="floatingTextarea2"
-                  label="Comments"
-                >
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Leave a comment here"
-                    style={{ height: "100px" }}
-                  />
-                </FloatingLabel>
-              </Col>
-            </Row>
-
-            <Button type="submit">Submit form</Button>
-          </Form>
-        </Card.Body>
-      </Card>
-    </>
-  );
-};
-
-const AddTest = () => {
   const [newTaskModal, setNewTaskModal] = useState<boolean>(false);
   const [newTaskDetails, setNewTaskDetails] = useState<any>(null);
   const [state, setState] = useState<StateType>({
@@ -210,6 +106,107 @@ const AddTest = () => {
     });
     setNewTaskModal(true);
   };
+
+  return (
+    <>
+      <Card>
+        <Card.Body>
+          <Form noValidate validated={validated} onSubmit={handleSubmitForm}>
+            <Form.Group
+              className="position-relative mb-3"
+              controlId="validationTooltip01"
+            >
+              <Form.Label>First name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                defaultValue="Mark"
+              />
+              <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group
+              className="position-relative mb-3"
+              controlId="validationTooltip01"
+            >
+              <Form.Label>Shortcut</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Shortcut"
+                defaultValue=""
+              />
+              <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group
+              className="position-relative mb-3"
+              controlId="validationTooltip01"
+            >
+              <Form.Label>Sample Type</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Sample Type"
+                defaultValue=""
+              />
+              <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group
+              className="position-relative mb-3"
+              controlId="validationTooltip01"
+            >
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                required
+                type="number"
+                placeholder="First name"
+                defaultValue=""
+              />
+              <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group
+              className="position-relative mb-3"
+              controlId="validationTooltip01"
+            >
+              <Form.Label>Precautions</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Precautions"
+                style={{ height: "100px" }}
+              />
+            </Form.Group>
+            <Row>
+              <Col>
+                <TaskDetails newTask={newTask} />
+              </Col>
+            </Row>
+            {newTaskModal && (
+              <AddNewTask
+                newTaskModal={newTaskModal}
+                toggleNewTaskModal={toggleNewTaskModal}
+                handleNewTask={handleNewTask}
+                handleSubmit={handleSubmit}
+                newTaskDetails={newTaskDetails}
+                handleDateChange={handleDateChange}
+                register={register}
+                errors={errors}
+                control={control}
+              />
+            )}
+
+            <Button type="submit">Save</Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
+
+const AddTest = () => {
   return (
     <React.Fragment>
       <PageTitle
@@ -217,7 +214,7 @@ const AddTest = () => {
           { label: "Test", path: "/apps/test" },
           { label: "Create", path: "/apps/test/add", active: true },
         ]}
-        title={"CREATE"}
+        title={"Create"}
       />
 
       <Row>
@@ -225,24 +222,6 @@ const AddTest = () => {
           <NormalFormValidation />
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <TaskDetails newTask={newTask} />
-        </Col>
-      </Row>
-      {newTaskModal && (
-        <AddNewTask
-          newTaskModal={newTaskModal}
-          toggleNewTaskModal={toggleNewTaskModal}
-          handleNewTask={handleNewTask}
-          handleSubmit={handleSubmit}
-          newTaskDetails={newTaskDetails}
-          handleDateChange={handleDateChange}
-          register={register}
-          errors={errors}
-          control={control}
-        />
-      )}
     </React.Fragment>
   );
 };
