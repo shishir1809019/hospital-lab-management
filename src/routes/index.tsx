@@ -7,6 +7,7 @@ import AddCulture from "../pages/apps/Culture/AddCulture";
 import AddCultureOption from "../pages/apps/CultureOption/AddCultureOption";
 import AddInvoice from "../pages/apps/Invoice/List/AddInvoice";
 import AddBranch from "../pages/apps/branches/addBranch";
+import AddAntibiotics from "../pages/apps/antibiotics/addAntibiotics";
 
 const Login = React.lazy(() => import("../pages/auth/Login"));
 const Logout = React.lazy(() => import("../pages/auth/Logout"));
@@ -25,7 +26,7 @@ const TestApp = React.lazy(() => import("../pages/apps/Test"));
 const Culture = React.lazy(() => import("../pages/apps/Culture/Inbox"));
 const CultureOptions = React.lazy(() => import("../pages/apps/CultureOption"));
 const Invoice = React.lazy(() => import("../pages/apps/Invoice/List"));
-const FileManager = React.lazy(() => import("../pages/apps/FileManager"));
+const Antibiotics = React.lazy(() => import("../pages/apps/antibiotics"));
 
 const Error404 = React.lazy(() => import("../pages/error/Error404"));
 const Error500 = React.lazy(() => import("../pages/error/Error500"));
@@ -163,6 +164,24 @@ const addBranchesRoutes: RoutesProps = {
   element: <AddBranch />,
 };
 
+const AntibioticsRoutes: RoutesProps = {
+  path: "/apps/antibiotics",
+  name: "Components",
+  icon: "award",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  element: <Antibiotics />,
+};
+
+const addAntibioticsRoutes: RoutesProps = {
+  path: "/apps/antibiotics/add",
+  name: "Components",
+  icon: "award",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  element: <AddAntibiotics />,
+};
+
 // const widgetsRoutes: RoutesProps = {
 //   path: "/components/widgets",
 //   name: "Components",
@@ -184,6 +203,8 @@ const appRoutes = [
   branchesRoutes,
   addBranchesRoutes,
   // widgetsRoutes,
+  AntibioticsRoutes,
+  addAntibioticsRoutes,
 ];
 
 // pages

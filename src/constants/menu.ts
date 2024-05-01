@@ -66,6 +66,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
     icon: "git-branch",
     url: "/apps/branches",
   },
+  {
+    key: "apps-antiiotics",
+    label: "Antibiotics",
+    isTitle: false,
+    icon: "award",
+    url: "/apps/antibiotics",
+  },
   // {
   //   key: "widgets",
   //   label: "Widgets",
