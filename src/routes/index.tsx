@@ -8,6 +8,8 @@ import AddCultureOption from "../pages/apps/CultureOption/AddCultureOption";
 import AddInvoice from "../pages/apps/Invoice/List/AddInvoice";
 import AddBranch from "../pages/apps/branches/addBranch";
 import AddAntibiotics from "../pages/apps/antibiotics/addAntibiotics";
+import TestPrice from "../pages/apps/price-list/Test";
+import CulturePrice from "../pages/apps/price-list/Culture";
 
 const Login = React.lazy(() => import("../pages/auth/Login"));
 const Logout = React.lazy(() => import("../pages/auth/Logout"));
@@ -182,6 +184,26 @@ const addAntibioticsRoutes: RoutesProps = {
   element: <AddAntibiotics />,
 };
 
+const priceListRoutes: RoutesProps = {
+  path: "/dashboard",
+  name: "Price List",
+  icon: "bar-chart-2",
+  children: [
+    {
+      path: "/price-list/test",
+      name: "Test",
+      element: <TestPrice />,
+      route: PrivateRoute,
+    },
+    {
+      path: "/price-list/culture",
+      name: "Culture",
+      element: <CulturePrice />,
+      route: PrivateRoute,
+    },
+  ],
+};
+
 // const widgetsRoutes: RoutesProps = {
 //   path: "/components/widgets",
 //   name: "Components",
@@ -205,6 +227,7 @@ const appRoutes = [
   // widgetsRoutes,
   AntibioticsRoutes,
   addAntibioticsRoutes,
+  priceListRoutes,
 ];
 
 // pages

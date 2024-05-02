@@ -184,8 +184,14 @@ const AppMenu = ({ menuItems }: AppMenuProps) => {
     if (div) {
       let items: any = div.getElementsByTagName("a");
       for (let i: number = 0; i < items.length; ++i) {
-        let trimmedURL = location?.pathname?.replaceAll(process.env.PUBLIC_URL, "");
-        if (trimmedURL === items[i]?.pathname?.replaceAll(process.env.PUBLIC_URL, "")) {
+        let trimmedURL = location?.pathname?.replaceAll(
+          process.env.PUBLIC_URL,
+          ""
+        );
+        if (
+          trimmedURL ===
+          items[i]?.pathname?.replaceAll(process.env.PUBLIC_URL, "")
+        ) {
           matchingMenuItem = items[i];
           break;
         }

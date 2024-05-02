@@ -73,6 +73,28 @@ const MENU_ITEMS: MenuItemTypes[] = [
     icon: "award",
     url: "/apps/antibiotics",
   },
+
+  {
+    key: "price-list",
+    label: "Price List",
+    isTitle: false,
+    icon: "bar-chart-2",
+    children: [
+      {
+        key: "ds-test",
+        label: "Test",
+        url: "/price-list/test",
+        parentKey: "price-list",
+      },
+      {
+        key: "ds-culture",
+        label: "Culture",
+        url: "/price-list/culture",
+        parentKey: "price-list",
+      },
+    ],
+  },
+
   // {
   //   key: "widgets",
   //   label: "Widgets",
@@ -115,6 +137,26 @@ const HORIZONTAL_MENU_ITEMS: MenuItemTypes[] = [
     isTitle: false,
     icon: "file-text",
   },
+  {
+    key: "price-list",
+    label: "Price List",
+    isTitle: false,
+    icon: "bar-chart-2",
+    children: [
+      {
+        key: "ds-test",
+        label: "Test",
+        url: "/price-list/test",
+        parentKey: "price-list",
+      },
+      {
+        key: "ds-culture",
+        label: "Culture",
+        url: "/price-list/culture",
+        parentKey: "price-list",
+      },
+    ],
+  },
 ];
 
 const TWO_COl_MENU_ITEMS: MenuItemTypes[] = [
@@ -149,6 +191,26 @@ const TWO_COl_MENU_ITEMS: MenuItemTypes[] = [
     icon: "package",
     label: "Components",
     isTitle: true,
+  },
+  {
+    key: "price-list",
+    label: "Price List",
+    isTitle: false,
+    icon: "bar-chart-2",
+    children: [
+      {
+        key: "ds-test",
+        label: "Test",
+        url: "/price-list/test",
+        parentKey: "price-list",
+      },
+      {
+        key: "ds-culture",
+        label: "Culture",
+        url: "/price-list/culture",
+        parentKey: "price-list",
+      },
+    ],
   },
   // {
   //   key: "widgets",
