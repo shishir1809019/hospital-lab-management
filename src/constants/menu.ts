@@ -94,6 +94,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
+  {
+    key: "apps-reports",
+    label: "Reports",
+    isTitle: false,
+    icon: "pie-chart",
+    url: "/apps/reports",
+  },
 
   // {
   //   key: "widgets",

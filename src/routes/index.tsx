@@ -10,6 +10,7 @@ import AddBranch from "../pages/apps/branches/addBranch";
 import AddAntibiotics from "../pages/apps/antibiotics/addAntibiotics";
 import TestPrice from "../pages/apps/price-list/Test";
 import CulturePrice from "../pages/apps/price-list/Culture";
+import Reports from "../pages/apps/reports";
 
 const Login = React.lazy(() => import("../pages/auth/Login"));
 const Logout = React.lazy(() => import("../pages/auth/Logout"));
@@ -203,6 +204,14 @@ const priceListRoutes: RoutesProps = {
     },
   ],
 };
+const reportsRoutes: RoutesProps = {
+  path: "/apps/reports",
+  name: "Components",
+  icon: "award",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  element: <Reports />,
+};
 
 // const widgetsRoutes: RoutesProps = {
 //   path: "/components/widgets",
@@ -228,6 +237,7 @@ const appRoutes = [
   AntibioticsRoutes,
   addAntibioticsRoutes,
   priceListRoutes,
+  reportsRoutes,
 ];
 
 // pages
