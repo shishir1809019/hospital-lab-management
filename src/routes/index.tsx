@@ -80,7 +80,7 @@ const profileAppRoutes: RoutesProps = {
   header: "Apps",
 };
 
-const chatAppRoutes: RoutesProps = {
+const testAppRoutes: RoutesProps = {
   path: "/apps/test",
   name: "Test",
   route: PrivateRoute,
@@ -91,13 +91,22 @@ const chatAppRoutes: RoutesProps = {
 
 const AddTestAppRoutes: RoutesProps = {
   path: "/apps/test/add",
-  name: "Chat",
+  name: "Test",
   route: PrivateRoute,
   roles: ["Admin"],
   icon: "message-square",
   element: <AddTest />,
 };
-const emailAppRoutes: RoutesProps = {
+const editTestAppRoutes: RoutesProps = {
+  path: "/apps/test/edit/:shortcut",
+  name: "Test",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  icon: "thermometer",
+  element: <AddTest />,
+};
+
+const cultureAppRoutes: RoutesProps = {
   path: "apps/culture",
   name: "Culture",
   route: PrivateRoute,
@@ -105,8 +114,16 @@ const emailAppRoutes: RoutesProps = {
   icon: "wind",
   element: <Culture />,
 };
-const assLabAppRoutes: RoutesProps = {
+const addLabAppRoutes: RoutesProps = {
   path: "apps/culture/add",
+  name: "Culture",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  icon: "wind",
+  element: <AddCulture />,
+};
+const editCultureAppRoutes: RoutesProps = {
+  path: "apps/culture/edit/:id",
   name: "Culture",
   route: PrivateRoute,
   roles: ["Admin"],
@@ -125,6 +142,14 @@ const cultureOptionAppRoutes: RoutesProps = {
 
 const addCultureOptionAppRoutes: RoutesProps = {
   path: "/apps/culture-option/add",
+  name: "Culture Options",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  icon: "uil-briefcase",
+  element: <AddCultureOption />,
+};
+const editCultureOptionAppRoutes: RoutesProps = {
+  path: "/apps/culture-option/edit/:name",
   name: "Culture Options",
   route: PrivateRoute,
   roles: ["Admin"],
@@ -166,6 +191,14 @@ const addBranchesRoutes: RoutesProps = {
   roles: ["Admin"],
   element: <AddBranch />,
 };
+const editBranchesRoutes: RoutesProps = {
+  path: "/apps/branches/edit/:name",
+  name: "Components",
+  icon: "git-branch",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  element: <AddBranch />,
+};
 
 const AntibioticsRoutes: RoutesProps = {
   path: "/apps/antibiotics",
@@ -178,6 +211,14 @@ const AntibioticsRoutes: RoutesProps = {
 
 const addAntibioticsRoutes: RoutesProps = {
   path: "/apps/antibiotics/add",
+  name: "Components",
+  icon: "award",
+  route: PrivateRoute,
+  roles: ["Admin"],
+  element: <AddAntibiotics />,
+};
+const editAntibioticsRoutes: RoutesProps = {
+  path: "/apps/antibiotics/edit/:name",
   name: "Components",
   icon: "award",
   route: PrivateRoute,
@@ -223,19 +264,24 @@ const reportsRoutes: RoutesProps = {
 
 const appRoutes = [
   profileAppRoutes,
-  chatAppRoutes,
+  testAppRoutes,
   AddTestAppRoutes,
-  emailAppRoutes,
-  assLabAppRoutes,
+  editTestAppRoutes,
+  cultureAppRoutes,
+  editCultureAppRoutes,
+  addLabAppRoutes,
   cultureOptionAppRoutes,
   addCultureOptionAppRoutes,
+  editCultureOptionAppRoutes,
   invoiceAppRoutes,
   addInvoiceAppRoutes,
   branchesRoutes,
   addBranchesRoutes,
+  editBranchesRoutes,
   // widgetsRoutes,
   AntibioticsRoutes,
   addAntibioticsRoutes,
+  editAntibioticsRoutes,
   priceListRoutes,
   reportsRoutes,
 ];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Row, Col, Card, Button, Form, FloatingLabel } from "react-bootstrap";
 import * as yup from "yup";
@@ -8,6 +8,8 @@ import TaskDetails from "../Invoice/Board/TaskDetails";
 import AddNewTask from "../Invoice/Board/AddNewTask";
 import { TaskTypes, tasks } from "../Invoice/Board/data";
 import TestComponent from "./TestComponent";
+import { records } from "./data";
+import { useParams } from "react-router-dom";
 
 interface StateType {
   todoTasks: TaskTypes[];
@@ -16,8 +18,21 @@ interface StateType {
   doneTasks: TaskTypes[];
 }
 
-const NormalFormValidation = () => {
+const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
+  const [formState, setFormState] = useState({
+    name: "",
+    shortcut: "",
+    sampleType: "",
+    price: "",
+    precautions: "You will die",
+  });
+
+  useEffect(() => {
+    if (formData) {
+      setFormState(formData);
+    }
+  }, [formData]);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -45,7 +60,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="First name"
-                    defaultValue="Mark"
+                    defaultValue={formState.name}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -64,7 +79,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Shortcut"
-                    defaultValue=""
+                    defaultValue={formState.shortcut}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -82,7 +97,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Sample Type"
-                    defaultValue=""
+                    defaultValue={formState.sampleType}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -100,7 +115,7 @@ const NormalFormValidation = () => {
                     required
                     type="number"
                     placeholder="First name"
-                    defaultValue=""
+                    defaultValue={formState.price}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -120,13 +135,13 @@ const NormalFormValidation = () => {
                     required
                     placeholder="Precautions"
                     style={{ height: "100px" }}
-                    defaultValue=""
+                    defaultValue={formState.precautions}
                   />
                 </Form.Group>
               </Col>
             </Row>
             <TestComponent />
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">{formData ? "Update" : "Submit"}</Button>
           </Form>
         </Card.Body>
       </Card>
@@ -135,6 +150,17 @@ const NormalFormValidation = () => {
 };
 
 const AddTest = () => {
+  const { shortcut } = useParams();
+  const [editData, setEditData] = useState<any>(null);
+
+  useEffect(() => {
+    if (shortcut) {
+      const recordToEdit = records.find(
+        (record) => record.shortcut === shortcut
+      );
+      setEditData(recordToEdit);
+    }
+  }, [shortcut]);
   return (
     <React.Fragment>
       <PageTitle
@@ -147,7 +173,7 @@ const AddTest = () => {
 
       <Row>
         <Col lg={12}>
-          <NormalFormValidation />
+          <NormalFormValidation formData={editData} />
         </Col>
       </Row>
       {/* <Row>

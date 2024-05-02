@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
+import { useParams } from "react-router-dom";
+import records from "./data";
 
-const NormalFormValidation = () => {
+const NormalFormValidation = ({ formData }: any) => {
   const [inputs, setInputs] = useState([{ id: Math.random(), value: "" }]);
   const [validated, setValidated] = useState<boolean>(false);
+  const [formState, setFormState] = useState({
+    name: "",
+    option: "",
+  });
+  useEffect(() => {
+    if (formData) {
+      setFormState(formData);
+    }
+    setInputs([{ id: Math.random(), value: formData?.option }]);
+  }, [formData]);
 
   const handleAddInput = () => {
     setInputs(inputs.concat({ id: Math.random(), value: "" }));
@@ -41,7 +53,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="First name"
-                    defaultValue="Mark"
+                    defaultValue={formState.name}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -105,6 +117,15 @@ const NormalFormValidation = () => {
 };
 
 const AddCultureOption = () => {
+  const { name } = useParams();
+  const [editData, setEditData] = useState<any>(null);
+
+  useEffect(() => {
+    if (name) {
+      const recordToEdit = records.find((record) => record.name === name);
+      setEditData(recordToEdit);
+    }
+  }, [name]);
   return (
     <React.Fragment>
       <PageTitle
@@ -117,7 +138,7 @@ const AddCultureOption = () => {
 
       <Row>
         <Col lg={12}>
-          <NormalFormValidation />
+          <NormalFormValidation formData={editData} />
         </Col>
       </Row>
     </React.Fragment>

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Button, Form, FloatingLabel } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
 import { TaskTypes } from "../Invoice/Board/data";
+import { useParams } from "react-router-dom";
+import { records } from "./data";
+import { number } from "yup";
 
 interface StateType {
   todoTasks: TaskTypes[];
@@ -10,8 +13,21 @@ interface StateType {
   doneTasks: TaskTypes[];
 }
 
-const NormalFormValidation = () => {
+const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
+  const [formState, setFormState] = useState({
+    name: "",
+    shortcut: "T404",
+    sampleType: "",
+    price: "",
+    precautions: "No comments",
+  });
+
+  useEffect(() => {
+    if (formData) {
+      setFormState(formData);
+    }
+  }, [formData]);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -26,13 +42,6 @@ const NormalFormValidation = () => {
     <>
       <Card>
         <Card.Body>
-          <h4 className="header-title">Bootstrap Validation (Tooltips)</h4>
-          <p className="sub-header">
-            If your form layout allows it, you can swap the{" "}
-            <code>.valid | invalid-feedback</code> classes for{" "}
-            <code>.valid | invalid-tooltip</code> classes to display validation
-            feedback in a styled tooltip.
-          </p>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="align-items-center">
               <Col sm={6} md={4} lg={3} className="mb-3">
@@ -46,7 +55,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="First name"
-                    defaultValue="Mark"
+                    defaultValue={formState.name}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -65,7 +74,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Shortcut"
-                    defaultValue=""
+                    defaultValue={formState.shortcut}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -83,7 +92,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Sample Type"
-                    defaultValue=""
+                    defaultValue={formState.sampleType}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -101,7 +110,7 @@ const NormalFormValidation = () => {
                     required
                     type="number"
                     placeholder="First name"
-                    defaultValue=""
+                    defaultValue={formState.price}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -120,12 +129,13 @@ const NormalFormValidation = () => {
                     as="textarea"
                     placeholder="Leave a comment here"
                     style={{ height: "100px" }}
+                    defaultValue={formState.precautions}
                   />
                 </FloatingLabel>
               </Col>
             </Row>
 
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">{formData ? "Update" : "Submit"}</Button>
           </Form>
         </Card.Body>
       </Card>
@@ -134,6 +144,17 @@ const NormalFormValidation = () => {
 };
 
 const AddCulture = () => {
+  const { id } = useParams();
+  const [editData, setEditData] = useState<any>(null);
+
+  useEffect(() => {
+    if (id) {
+      const recordToEdit = records.find(
+        (record) => record.id === Number(id + 1)
+      );
+      setEditData(recordToEdit);
+    }
+  }, [id]);
   return (
     <React.Fragment>
       <PageTitle
@@ -146,7 +167,7 @@ const AddCulture = () => {
 
       <Row>
         <Col lg={12}>
-          <NormalFormValidation />
+          <NormalFormValidation formData={editData} />
         </Col>
       </Row>
     </React.Fragment>

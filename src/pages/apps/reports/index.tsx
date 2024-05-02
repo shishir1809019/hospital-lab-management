@@ -66,11 +66,22 @@ const columns = [
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item href="#">
-              <i className="bi bi-pencil-square"></i> Edit
+              <i className="bi bi-pencil-square"></i> Edit Report
             </Dropdown.Item>
-
             <Dropdown.Item href="#">
               <i className="bi bi-trash-fill"></i> Delete
+            </Dropdown.Item>
+            <Dropdown.Item href="#">
+              <i className="bi bi-pen-fill"></i> Sign Report
+            </Dropdown.Item>
+            <Dropdown.Item href="#">
+              <i className="bi bi-eye-fill"></i> Show
+            </Dropdown.Item>
+            <Dropdown.Item href="#">
+              <i className="bi bi-upc-scan"></i> Print Barcode
+            </Dropdown.Item>
+            <Dropdown.Item href="#">
+              <i className="bi bi-envelope-fill"></i> Send Report
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

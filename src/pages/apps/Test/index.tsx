@@ -34,9 +34,7 @@ const columns = [
   {
     Header: "Action",
     accessor: "action",
-    sort: false, // Typically, you don't sort by action columns
-    // Optional: Define how the cell should render if you're using custom render logic,
-    // for example, buttons for edit and delete actions
+    sort: false,
     Cell: ({ row }: any) => (
       <div>
         <Dropdown as={ButtonGroup} className="mt-2 me-1" align="end">
@@ -44,12 +42,18 @@ const columns = [
             <i className="bi bi-gear"></i>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href="#">
-              <i className="bi bi-pencil-square"></i> Edit
+            <Dropdown.Item as="span">
+              <Link
+                to={`/apps/test/edit/${row.values.shortcut}`}
+                className="dropdown-item"
+              >
+                <i className="bi bi-pencil-square"></i> Edit
+              </Link>
             </Dropdown.Item>
-
-            <Dropdown.Item href="#">
-              <i className="bi bi-trash-fill"></i> Delete
+            <Dropdown.Item as="span">
+              <Link to="#" className="dropdown-item">
+                <i className="bi bi-trash-fill"></i> Delete
+              </Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

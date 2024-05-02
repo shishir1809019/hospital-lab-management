@@ -70,7 +70,7 @@ interface EmailItems {
 const columns = [
   {
     Header: "Name",
-    accessor: "name", // Identifies the data field for this column
+    accessor: "name",
     sort: true,
   },
   {
@@ -93,12 +93,18 @@ const columns = [
             <i className="bi bi-gear"></i>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item href="#">
-              <i className="bi bi-pencil-square"></i> Edit
+            <Dropdown.Item as="span">
+              <Link
+                to={`/apps/culture/edit/${row.id}`}
+                className="dropdown-item"
+              >
+                <i className="bi bi-pencil-square"></i> Edit
+              </Link>
             </Dropdown.Item>
-
-            <Dropdown.Item href="#">
-              <i className="bi bi-trash-fill"></i> Delete
+            <Dropdown.Item as="span">
+              <Link to="#" className="dropdown-item">
+                <i className="bi bi-trash-fill"></i> Delete
+              </Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -141,9 +147,6 @@ const Culture = () => {
     (email) => email.is_read && !email.is_important
   );
 
-  /**
-   * get start index for other emails
-   */
   const getStartIndex = useCallback(
     (index) => {
       let start = index - 1;
@@ -156,9 +159,6 @@ const Culture = () => {
     [unreadEmails.length, importantEmails.length]
   );
 
-  /**
-   * get end index for other emails
-   */
   const getEndIndex = useCallback(
     (index) => {
       let end = index;

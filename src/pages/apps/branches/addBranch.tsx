@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Row,
@@ -12,20 +12,25 @@ import {
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PageTitle from "../../../components/PageTitle";
+import { useParams } from "react-router-dom";
+import records from "./data";
 
 // components
 
-const NormalFormValidation = () => {
-  const [inputs, setInputs] = useState([{ id: Math.random(), value: "" }]);
+const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
 
-  const handleAddInput = () => {
-    setInputs(inputs.concat({ id: Math.random(), value: "" }));
-  };
+  const [formState, setFormState] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
 
-  const handleRemoveInput = (id: any) => {
-    setInputs(inputs.filter((input) => input.id !== id));
-  };
+  useEffect(() => {
+    if (formData) {
+      setFormState(formData);
+    }
+  }, [formData]);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -54,7 +59,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Enter First name"
-                    defaultValue="Mark"
+                    defaultValue={formState.name}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -74,7 +79,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Enter Phone Number"
-                    defaultValue=""
+                    defaultValue={formState.phone}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -95,7 +100,7 @@ const NormalFormValidation = () => {
                     required
                     style={{ height: "100px" }}
                     placeholder="Enter Address"
-                    defaultValue=""
+                    defaultValue={formState.address}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -103,7 +108,7 @@ const NormalFormValidation = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">{formData ? "Update" : "Submit"}</Button>
           </Form>
         </Card.Body>
       </Card>
@@ -112,6 +117,16 @@ const NormalFormValidation = () => {
 };
 
 const AddBranch = () => {
+  const { name } = useParams();
+
+  const [editData, setEditData] = useState<any>(null);
+
+  useEffect(() => {
+    if (name) {
+      const recordToEdit = records.find((record) => record.name === name);
+      setEditData(recordToEdit);
+    }
+  }, [name]);
   return (
     <React.Fragment>
       <PageTitle
@@ -124,7 +139,7 @@ const AddBranch = () => {
 
       <Row>
         <Col lg={12}>
-          <NormalFormValidation />
+          <NormalFormValidation formData={editData} />
         </Col>
       </Row>
     </React.Fragment>

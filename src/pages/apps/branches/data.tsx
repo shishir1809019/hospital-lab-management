@@ -11,13 +11,13 @@ const generateRecords = (count: any) => {
     "Mymensingh",
   ];
   for (let i = 1; i <= count; i++) {
-    const cityIndex = i % cities.length; // Cycle through the array of cities
+    const cityIndex = i % cities.length;
     records.push({
       id: i,
       name: `${cities[cityIndex]} Branch`,
-      phone: `${Math.floor(1000000000 + Math.random() * 9000000000)}`, // Random 10-digit number
+      phone: `${Math.floor(1000000000 + Math.random() * 9000000000)}`,
       address: `House #${i}, Road #${i + 1}, ${cities[cityIndex]}, Bangladesh`,
-      action: "View Details", // Placeholder for action items
+      action: "View Details",
     });
   }
   return records;

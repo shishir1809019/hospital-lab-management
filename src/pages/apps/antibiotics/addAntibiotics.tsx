@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Row,
@@ -12,20 +12,23 @@ import {
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PageTitle from "../../../components/PageTitle";
+import { useParams } from "react-router-dom";
+import records from "./data";
 
 // components
 
-const NormalFormValidation = () => {
-  const [inputs, setInputs] = useState([{ id: Math.random(), value: "" }]);
+const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
-
-  const handleAddInput = () => {
-    setInputs(inputs.concat({ id: Math.random(), value: "" }));
-  };
-
-  const handleRemoveInput = (id: any) => {
-    setInputs(inputs.filter((input) => input.id !== id));
-  };
+  const [formState, setFormState] = useState({
+    name: "",
+    shortcut: "",
+    commercialName: "",
+  });
+  useEffect(() => {
+    if (formData) {
+      setFormState(formData);
+    }
+  }, [formData]);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
@@ -54,7 +57,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Enter  name"
-                    defaultValue="Antibiotics"
+                    defaultValue={formState.name}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -72,7 +75,7 @@ const NormalFormValidation = () => {
                     required
                     type="text"
                     placeholder="Enter shortcut"
-                    defaultValue=""
+                    defaultValue={formState.shortcut}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -94,7 +97,7 @@ const NormalFormValidation = () => {
                     required
                     style={{ height: "100px" }}
                     placeholder="Enter Shortcut Commercial Name"
-                    defaultValue=""
+                    defaultValue={formState.commercialName}
                   />
                   <Form.Control.Feedback tooltip>
                     Looks good!
@@ -111,6 +114,16 @@ const NormalFormValidation = () => {
 };
 
 const AddAntibiotics = () => {
+  const { name } = useParams();
+
+  const [editData, setEditData] = useState<any>(null);
+
+  useEffect(() => {
+    if (name) {
+      const recordToEdit = records.find((record) => record.name === name);
+      setEditData(recordToEdit);
+    }
+  }, [name]);
   return (
     <React.Fragment>
       <PageTitle
@@ -123,7 +136,7 @@ const AddAntibiotics = () => {
 
       <Row>
         <Col lg={12}>
-          <NormalFormValidation />
+          <NormalFormValidation formData={editData} />
         </Col>
       </Row>
     </React.Fragment>
