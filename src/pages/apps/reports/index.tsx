@@ -1,8 +1,7 @@
 import React from "react";
 
 // components
-import { Row, Col, Dropdown, Card, Button, ButtonGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Dropdown, Card, ButtonGroup } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
 import Table from "../../../components/Table";
 import records from "./data";

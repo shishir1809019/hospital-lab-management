@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import {
   Card,
   Col,
-  Dropdown,
   Row,
   Button,
   Table,
   Form,
   FloatingLabel,
 } from "react-bootstrap";
-import FeatherIcons from "feather-icons-react";
-
-interface TestComponentProps {
-  newTask: (status: string, queue: string) => void;
-}
 
 const TestComponent = () => {
   const [tableData, setTableData] = useState([
@@ -74,7 +68,9 @@ const TestComponent = () => {
 
   const renderTableData = () => {
     return tableData.map((rowData, index) => {
-      const { name, unit, result, referenceRange, separated, status } = rowData;
+      // const { name, unit, result, referenceRange, separated, status } = rowData;
+      const { name, unit } = rowData;
+
       return (
         <tr key={index}>
           <td>

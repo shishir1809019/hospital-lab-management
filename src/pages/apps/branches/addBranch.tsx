@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import {
-  Row,
-  Col,
-  Card,
-  Button,
-  InputGroup,
-  Form,
-  FloatingLabel,
-} from "react-bootstrap";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
 import { useParams } from "react-router-dom";
 import records from "./data";

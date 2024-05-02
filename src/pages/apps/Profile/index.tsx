@@ -1,24 +1,14 @@
-import React, { useState } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import "@fullcalendar/react";
-import { EventClickArg, EventInput } from "@fullcalendar/core";
 import * as yup from "yup";
 
 // components
 import PageTitle from "../../../components/PageTitle";
 
-// dummy data
-import { defaultEvents } from "./data";
-
-// images
-import calendarImg from "../../../assets/images/cal.png";
 import { FormInput, VerticalForm } from "../../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FileUpload from "../../forms/FileUpload";
 
-interface IntroCardProps {
-  createNewEvent: () => void;
-}
 interface UserData {
   username: string;
   email: string;
@@ -27,7 +17,7 @@ interface UserData {
   checkbox: boolean;
 }
 
-const IntroCard = ({ createNewEvent }: IntroCardProps) => {
+const IntroCard = () => {
   const schemaResolver = yupResolver(
     yup.object().shape({
       username: yup.string().required("Please enter Username"),
@@ -102,30 +92,6 @@ const IntroCard = ({ createNewEvent }: IntroCardProps) => {
 };
 
 const Profile = () => {
-  /*
-   * modal handeling
-   */
-  const [show, setShow] = useState<boolean>(false);
-
-  const onOpenModal = () => setShow(true);
-  const [isEditable, setIsEditable] = useState<boolean>(false);
-
-  /*
-   * event data
-   */
-  const [eventData, setEventData] = useState<EventInput>({});
-  const [dateInfo, setDateInfo] = useState<any>({});
-
-  /*
-    on add event 
-    */
-
-  // create new event
-  const createNewEvent = () => {
-    setIsEditable(false);
-    onOpenModal();
-  };
-
   return (
     <>
       <PageTitle breadCrumbItems={[]} title={"Profile"} />
@@ -134,7 +100,7 @@ const Profile = () => {
         <Col>
           <Card>
             <Card.Body>
-              <IntroCard createNewEvent={createNewEvent} />
+              <IntroCard />
             </Card.Body>
           </Card>
         </Col>

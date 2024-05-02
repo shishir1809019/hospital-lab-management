@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, Resolver, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 interface VerticalFromProps<TFormValues> {
   defaultValues?: any;

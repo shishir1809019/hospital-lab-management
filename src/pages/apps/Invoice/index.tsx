@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import { Row, Col, Dropdown, Card, Button, ButtonGroup } from "react-bootstrap";
+import { Col, Dropdown, Card, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-// components
-import PageTitle from "../../../../components/PageTitle";
-// dummy data
-import records, {
-  todayTasks,
-  upcomingTasks,
-  otherTasks,
-  TaskItemTypes,
-} from "./data";
-import Table from "../../../../components/Table";
+import PageTitle from "../../../components/PageTitle";
+import { records } from "./data";
+import Table from "../../../components/Table";
 
 const columns = [
   {
@@ -132,21 +124,6 @@ const sizePerPageList = [
   },
 ];
 const Invoice = () => {
-  const [todayTask] = useState<TaskItemTypes[]>([...todayTasks]);
-  const [upcomingTask] = useState<TaskItemTypes[]>([...upcomingTasks]);
-  const [otherTask] = useState<TaskItemTypes[]>([...otherTasks]);
-  const [selectedTask, setSelectedTask] = useState<TaskItemTypes>(
-    todayTasks[0]
-  );
-
-  /**
-   * Selects the task
-   * @param {*} taks
-   */
-  const selectTask = (task: TaskItemTypes) => {
-    setSelectedTask(task);
-  };
-
   return (
     <>
       <PageTitle

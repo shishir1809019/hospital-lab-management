@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Row, Col, Card, Button, Dropdown, ButtonGroup } from "react-bootstrap";
+import { Row, Col, Card, Dropdown, ButtonGroup } from "react-bootstrap";
 
-// components
 import PageTitle from "../../../components/PageTitle";
 
-// dummy data
-import { USERS, ChatUserType, records } from "./data";
+import { records } from "./data";
 
 import Table from "../../../components/Table";
 import { Link } from "react-router-dom";
@@ -62,17 +59,6 @@ const columns = [
   },
 ];
 
-// Example handler functions for actions
-function handleEdit(data: any) {
-  console.log("Edit Data:", data);
-  // Implement your edit logic here
-}
-
-function handleDelete(data: any) {
-  console.log("Delete Data:", data);
-  // Implement your delete logic here
-}
-
 const sizePerPageList = [
   {
     text: "5",
@@ -92,17 +78,7 @@ const sizePerPageList = [
   },
 ];
 
-// TestApp
 const TestApp = () => {
-  const [selectedUser, setSelectedUser] = useState<ChatUserType>(USERS[1]);
-
-  /**
-   * On user change
-   */
-  const onUserChange = (user: ChatUserType) => {
-    setSelectedUser(user);
-  };
-
   return (
     <>
       <PageTitle

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Card,
-  Button,
-  Table,
-  Dropdown,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Row, Col, Card, Table, Dropdown, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import records from "./data";
 

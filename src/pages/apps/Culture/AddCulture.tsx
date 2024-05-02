@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Button, Form, FloatingLabel } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
-import { TaskTypes } from "../Invoice/Board/data";
 import { useParams } from "react-router-dom";
 import { records } from "./data";
-import { number } from "yup";
-
-interface StateType {
-  todoTasks: TaskTypes[];
-  inprogressTasks: TaskTypes[];
-  reviewTasks: TaskTypes[];
-  doneTasks: TaskTypes[];
-}
 
 const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);

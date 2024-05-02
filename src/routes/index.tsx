@@ -5,12 +5,12 @@ import PrivateRoute from "./PrivateRoute";
 import AddTest from "../pages/apps/Test/AddTest";
 import AddCulture from "../pages/apps/Culture/AddCulture";
 import AddCultureOption from "../pages/apps/CultureOption/AddCultureOption";
-import AddInvoice from "../pages/apps/Invoice/List/AddInvoice";
 import AddBranch from "../pages/apps/branches/addBranch";
 import AddAntibiotics from "../pages/apps/antibiotics/addAntibiotics";
 import TestPrice from "../pages/apps/price-list/Test";
 import CulturePrice from "../pages/apps/price-list/Culture";
 import Reports from "../pages/apps/reports";
+import AddInvoice from "../pages/apps/Invoice/AddInvoice";
 
 const Login = React.lazy(() => import("../pages/auth/Login"));
 const Logout = React.lazy(() => import("../pages/auth/Logout"));
@@ -28,7 +28,7 @@ const ProfileApp = React.lazy(() => import("../pages/apps/Profile"));
 const TestApp = React.lazy(() => import("../pages/apps/Test"));
 const Culture = React.lazy(() => import("../pages/apps/Culture/Inbox"));
 const CultureOptions = React.lazy(() => import("../pages/apps/CultureOption"));
-const Invoice = React.lazy(() => import("../pages/apps/Invoice/List"));
+const Invoice = React.lazy(() => import("../pages/apps/Invoice/"));
 const Antibiotics = React.lazy(() => import("../pages/apps/antibiotics"));
 
 const Error404 = React.lazy(() => import("../pages/error/Error404"));

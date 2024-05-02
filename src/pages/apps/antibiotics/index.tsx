@@ -1,7 +1,5 @@
-import React from "react";
-
 // components
-import { Row, Col, Dropdown, Card, Button, ButtonGroup } from "react-bootstrap";
+import { Col, Dropdown, Card, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PageTitle from "../../../components/PageTitle";
 import Table from "../../../components/Table";
@@ -76,10 +74,10 @@ const Antibiotics = () => {
     <>
       <PageTitle
         breadCrumbItems={[
-          { label: "Branches", path: "/apps/calendar" },
-          { label: "Branches", path: "/apps/calendar", active: true },
+          // { label: "Branches", path: "/apps/calendar" },
+          { label: "Antibiotics", path: "/apps/antibiotics", active: true },
         ]}
-        title={"Branches"}
+        title={"Antibiotics"}
       />
 
       <Card>

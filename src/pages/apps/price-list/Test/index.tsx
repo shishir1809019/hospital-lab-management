@@ -1,17 +1,4 @@
-import React from "react";
-
-// components
-import {
-  Row,
-  Col,
-  Dropdown,
-  Card,
-  Button,
-  ButtonGroup,
-  Form,
-  InputGroup,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, Form, InputGroup } from "react-bootstrap";
 
 import records from "./data";
 import PageTitle from "../../../../components/PageTitle";

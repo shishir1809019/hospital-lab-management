@@ -249,20 +249,16 @@ interface Record {
 }
 
 const sampleTypes = ["Blood", "Urine", "Saliva", "Tissue"];
-const basePrice = 100; // Base price to calculate random prices
-
-// Function to generate a random sample type
+const basePrice = 100;
 const getRandomSampleType = () => {
   const idx = Math.floor(Math.random() * sampleTypes.length);
   return sampleTypes[idx];
 };
 
-// Function to generate a random price
 const getRandomPrice = () => {
   return Math.floor(Math.random() * 200) + basePrice;
 };
 
-// Function to generate random records
 const generateRecords = (count: number): Record[] => {
   return Array.from({ length: count }, (_, index) => ({
     name: `Test ${index + 1}`,
@@ -272,7 +268,6 @@ const generateRecords = (count: number): Record[] => {
   }));
 };
 
-// Generate 50 lab test records
 const records: Record[] = generateRecords(50);
 
 export { USERS, CHATHISTORY, records };

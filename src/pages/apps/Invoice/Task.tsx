@@ -17,7 +17,42 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 // dummy data
-import { TaskItemTypes } from "./data";
+
+interface ChecklistsItems {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+interface AttachmentsItems {
+  id: number;
+  filename: string;
+  size: string;
+  image: string;
+}
+
+interface CommentsItems {
+  id: number;
+  author: string;
+  text: string;
+  posted_on: string;
+  author_avatar: string;
+}
+
+export interface TaskItemTypes {
+  id: number;
+  title: string;
+  assigned_to: string;
+  assignee_avatar: string;
+  due_date: string;
+  completed: boolean;
+  priority: string;
+  stage: string;
+  checklists: Array<ChecklistsItems>;
+  description: string;
+  attachments: Array<AttachmentsItems>;
+  comments: Array<CommentsItems>;
+}
 
 interface TaskProps {
   selectedTask: TaskItemTypes;
@@ -217,7 +252,7 @@ const Task = ({ selectedTask }: TaskProps) => {
                 <h5 className="mb-2 fs-16">Comments</h5>
 
                 {/* comments */}
-                {(selectedTask.comments || []).map((comment, idx) => (
+                {(selectedTask.comments || []).map((comment, idx: any) => (
                   <React.Fragment key={idx}>
                     <div
                       key={idx}

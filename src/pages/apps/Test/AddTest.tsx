@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Row, Col, Card, Button, Form, FloatingLabel } from "react-bootstrap";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
-import TaskDetails from "../Invoice/Board/TaskDetails";
-import AddNewTask from "../Invoice/Board/AddNewTask";
-import { TaskTypes, tasks } from "../Invoice/Board/data";
 import TestComponent from "./TestComponent";
 import { records } from "./data";
 import { useParams } from "react-router-dom";
-
-interface StateType {
-  todoTasks: TaskTypes[];
-  inprogressTasks: TaskTypes[];
-  reviewTasks: TaskTypes[];
-  doneTasks: TaskTypes[];
-}
 
 const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
@@ -25,7 +12,7 @@ const NormalFormValidation = ({ formData }: any) => {
     shortcut: "",
     sampleType: "",
     price: "",
-    precautions: "You will die",
+    precautions: "Precautions",
   });
 
   useEffect(() => {
