@@ -210,4 +210,39 @@ const doctorNames = [
   "Dr. Ava Allen",
   "Dr. Ethan Young",
 ];
-export { records, branches, clientCodes, clientNames, doctorNames };
+
+const generateFakeData = () => {
+  const testNames = [
+    "(GLUCOSE) FASTING",
+    "1",
+    "12",
+    "12345",
+    "16016",
+    "1CBC",
+    "2",
+  ];
+  const data = [];
+
+  for (let i = 0; i < 50; i++) {
+    const testName = testNames[Math.floor(Math.random() * testNames.length)];
+    const price = Math.floor(Math.random() * 500) + 1; // Generate price between 1 and 500
+
+    data.push({
+      testName,
+      price,
+    });
+  }
+
+  return data;
+};
+
+const testCultureRecords = generateFakeData();
+
+export {
+  records,
+  branches,
+  clientCodes,
+  clientNames,
+  doctorNames,
+  testCultureRecords,
+};
