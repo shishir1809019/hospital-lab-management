@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import FeatherIcons from "feather-icons-react";
-import { Row, Col, Card, Button, Form } from "react-bootstrap";
-import {
-  branches,
-  clientCodes,
-  clientNames,
-  doctorNames,
-  testCultureRecords,
-} from "./data";
+import { Row, Col, Card } from "react-bootstrap";
+import { testCultureRecords } from "./data";
 import PageTitle from "../../../components/PageTitle";
 import Table from "../../../components/Table";
 
