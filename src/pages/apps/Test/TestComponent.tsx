@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 
 const TestComponent = () => {
+  const [inputs, setInputs] = useState([{ id: Math.random(), value: "" }]);
   const [tableData, setTableData] = useState([
     {
       name: "",
@@ -22,7 +23,6 @@ const TestComponent = () => {
   ]);
   const [selectedOption, setSelectedOption] = useState("text");
   const [isChecked, setIsChecked] = useState(false);
-  const [inputs, setInputs] = useState([{ id: Math.random(), value: "" }]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);

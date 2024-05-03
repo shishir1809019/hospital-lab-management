@@ -6,12 +6,12 @@ import Table from "../../../components/Table";
 const columns = [
   {
     Header: "Test Name",
-    accessor: "testName", // accessor is the "key" in the data
+    accessor: "testName",
   },
   {
     Header: "Price",
     accessor: "price",
-    Cell: ({ value }: any) => `${value} USD`, // Formatting the price to include USD
+    Cell: ({ value }: any) => `${value} USD`,
   },
 ];
 

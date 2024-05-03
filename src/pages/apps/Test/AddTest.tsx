@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import PageTitle from "../../../components/PageTitle";
-import TestComponent from "./TestComponent";
 import { records } from "./data";
 import { useParams } from "react-router-dom";
+import TitleComponent from "./TitleComponent";
 
 const NormalFormValidation = ({ formData }: any) => {
   const [validated, setValidated] = useState<boolean>(false);
@@ -127,7 +127,7 @@ const NormalFormValidation = ({ formData }: any) => {
                 </Form.Group>
               </Col>
             </Row>
-            <TestComponent />
+            <TitleComponent />
             <Button type="submit">{formData ? "Update" : "Submit"}</Button>
           </Form>
         </Card.Body>
