@@ -24,7 +24,6 @@ const TitleComponent = () => {
     setInputs([...inputs, newInput]);
   };
 
-  // Handler to add complex inputs (text, radio, checkbox, textarea)
   const handleAddComplexInput = () => {
     const newInput = {
       id: inputs.length,
@@ -39,12 +38,10 @@ const TitleComponent = () => {
     setInputs([...inputs, newInput]);
   };
 
-  // Remove input handler
   const handleRemoveInput = (id: any) => {
     setInputs(inputs.filter((input: any) => input.id !== id));
   };
 
-  // Update handler for any input
   const handleInputChange = (id: any, event: any) => {
     const { name, value } = event.target;
     const newInputs = inputs.map((input: any) => {
@@ -58,7 +55,6 @@ const TitleComponent = () => {
   const handleRadioChange = (event: any) => {
     setSelectedOption(event.target.value);
   };
-  // Toggle checkbox for complex input 'separated'
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
   };
