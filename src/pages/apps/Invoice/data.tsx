@@ -222,17 +222,14 @@ const generateFakeData = () => {
     "2",
   ];
   const data = [];
-
   for (let i = 0; i < 50; i++) {
     const testName = testNames[Math.floor(Math.random() * testNames.length)];
-    const price = Math.floor(Math.random() * 500) + 1; // Generate price between 1 and 500
-
+    const price = Math.floor(Math.random() * 500) + 1;
     data.push({
       testName,
       price,
     });
   }
-
   return data;
 };
 

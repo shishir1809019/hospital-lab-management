@@ -31,7 +31,7 @@ const AddInvoice = () => {
             <NormalFormValidation />
             <TestCulture />
             <Receipt />
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Create Invoice</Button>
           </Col>
         </Row>
       </Form>

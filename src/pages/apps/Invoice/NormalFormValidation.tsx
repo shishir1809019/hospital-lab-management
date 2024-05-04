@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import FeatherIcons from "feather-icons-react";
-import { Row, Col, Card, Button, Form } from "react-bootstrap";
+import { Row, Col, Card, Button, Form, Modal } from "react-bootstrap";
 import { branches, clientCodes, clientNames, doctorNames } from "./data";
 import TestCulture from "./TestCulture";
+import InfoModal from "./Modal";
 
 // components
 const NormalFormValidation = () => {
+  const [lgShow, setLgShow] = useState(false);
+  const [lgShowDoctor, setLgShowDoctor] = useState(false);
   return (
     <>
       <Card>
@@ -43,8 +46,18 @@ const NormalFormValidation = () => {
       </Card>{" "}
       <Card>
         <Card.Body>
+          <div className="d-flex justify-content-between">
+            <Form.Label>Patient Info</Form.Label>,
+            <Button
+              className="btn btn-warning btn-sm mb-2"
+              onClick={() => setLgShow(true)}
+            >
+              {" "}
+              <i className="bi bi-exclamation-triangle me-1"></i>Not Listed?
+            </Button>
+            <InfoModal lgShow={lgShow} setLgShow={setLgShow} />
+          </div>
           <Row className="align-items-center">
-            <Form.Label>Patient Info</Form.Label>
             <hr />
             <Col className="">
               <Form.Group
@@ -197,7 +210,46 @@ const NormalFormValidation = () => {
                 className="position-relative mb-3"
                 controlId="citySelection"
               >
-                <Form.Label>Name</Form.Label>
+                <div className="d-flex justify-content-between">
+                  <Form.Label>Doctor</Form.Label>
+                  <Button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => setLgShowDoctor(true)}
+                  >
+                    {" "}
+                    <i className="bi bi-exclamation-triangle me-1"></i>Not
+                    Listed?
+                  </Button>
+                  <Modal
+                    size="lg"
+                    show={lgShowDoctor}
+                    onHide={() => setLgShowDoctor(false)}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="example-modal-sizes-title-lg">
+                        Create Doctor
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Form.Group
+                        className="position-relative mb-3"
+                        controlId="citySelection"
+                      >
+                        <Form.Label>Name</Form.Label>
+                        <div className="d-flex">
+                          <Form.Control
+                            required
+                            defaultValue=""
+                            placeholder="Doctor Name"
+                            className="position-relative"
+                          />
+                        </div>
+                      </Form.Group>
+                      <Button variant="primary">Save</Button>{" "}
+                    </Modal.Body>
+                  </Modal>
+                </div>
                 <div className="d-flex">
                   <Form.Control
                     as="select"
