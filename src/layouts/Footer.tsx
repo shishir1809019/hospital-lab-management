@@ -10,8 +10,7 @@ const Footer = () => {
       <div className="container-fluid">
         <Row>
           <Col sm={6}>
-            {currentYear} &copy; Shreyu theme modified by{" "}
-            <Link to="#">Shishir</Link>
+            {currentYear} &copy; <Link to="#">Shishir</Link>
           </Col>
 
           <Col sm={6}>
